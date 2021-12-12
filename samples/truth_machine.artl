@@ -1,0 +1,49 @@
+
+get_input w2 w3 w4 w5 w6 w7 w8 w9 w10 w11 w12 w13.
+
+push w2 w3 w4 w5.
+push w2 w3 w4 w5.
+
+
+nop w2 zero_label.
+    dec w2 w3 w4 w5 w6 w7 w8 w9 w10 w11 w12. w1 w2 w3 w4 w5. w1 w2 w3 w4 w5 n1.
+
+    loop_until_0 w2 w3 w4 w5 w6 w7 w8 w9 w10 w11 w12 w13 w4 w15 w16 w17 w18. w1 w2 w3 w4 zero_label.
+
+    
+add_0_to_compare w2 w3 w4 w5 w6 w7 w8 w9 w10 w11. w1 w2 w3 w4 w5 n1 n2 n3. w1 w2 w3 w4 w5.
+
+pop_and_cmp w2 w3 w4 w5 w6 w7 w8.
+
+bnoc_0 w2 w3 w4 w5 w6 w7 w8 w9 w10 w11 w12 w13 w14 w15 w16 w17. w1 w2 w3 w4 print_0.
+
+nop w2 zero_label2.
+    dec w2 w3 w4 w5 w6 w7 w8 w9 w10 w11 w12. w1 w2 w3 w4 w5. w1 w2 w3 w4 w5 n1.
+
+    loop_until_0 w2 w3 w4 w5 w6 w7 w8 w9 w10 w11 w12 w13 w14 w15 w16 w17 w18. w1 w2 w3 w4 zero_label2.
+
+add_1_to_compare w2 w3 w4 w5 w6 w7 w8 w9 w10 w11. w1 w2 w3 w4 w5 n1 n2 n3. w1 w2 w3 w4 w5 n1.
+
+pop_and_cmp w2 w3 w4 w5 w6 w7 w8.
+
+bnoc_1 w2 w3 w4 w5 w6 w7 w8 w9 w10 w11 w12 w13 w14 w15 w16 w17. w1 w2 w3 w4 print_1.
+
+end_if_none w2 w3 w4 w5 w6 w7 w8 w9 w10 w11 w12 w13 w14 w15. w1 w2 w3 w4 end.
+
+    nop w2 print_1.
+        print1 w2 w3 w4 w5 w6 w7 w8 w9 w10 w11 w12 w13 w14.
+
+        loop w2 w3 w4 w5 w6 w7 w8 w9 w10 w11 w12 w13 w14 w15 w16. w1 w2 w3 w4 print_1.
+
+    nop w2 print_0.
+        nop nop zero_label3.
+        dec w2 w3 w4 w5 w6 w7 w8 w9 w10 w11 w12. w1 w2 w3 w4 w5. w1 w2 w3 w4 w5 n1.
+
+        loop_until_0 w2 w3 w4 w5 w6 w7 w8 w9 w10 w11 w12 w13 w14 w15 w16 w17 w18. w1 w2 w3 w4 zero_label3.
+
+        add_0_to_print w2 w3 w4 w5 w6 w7 w8 w9 w10 w11. w1 w2 w3 w4 w5 n1 n2 n3. w1 w2 w3 w4 w5.
+
+        print0 w2 w3 w4 w5 w6 w7 w8 w9 w10 w11 w12 w13 w14.
+
+    
+nop w2 end.
