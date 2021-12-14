@@ -30,9 +30,16 @@ proc ensureProperNumberWasGiven(phrases: seq[Phrase]) =
         crash(pc, phrases[pc], "invalid number for this instruction")
 
 
+proc getCharWithoutCarriageReturn(): char =
+    result = stdin.readChar()
+    if result == '\r':
+        result = char(0)
+    return
+
+
 proc getSinglecharFromConsole(): char =
 
-    result = stdin.readChar()
+    result = getCharWithoutCarriageReturn()
 
     while stdin.readChar() != '\n': discard # Clears buffer
     return
@@ -96,11 +103,21 @@ proc i_accumulatorSubstract(phrases: seq[Phrase]) =
 
 
 proc i_accumulatorInput(legacyMode: bool) =
+
+    var character: char
+
     if legacyMode:
         stdout.write "\n>"
-        accumulator = uint8(getSinglecharFromConsole())
+        character = getSinglecharFromConsole()
     else:
-        accumulator = uint8(stdin.readChar())
+        character = getCharWithoutCarriageReturn()
+    
+    #[
+        This check is done because getCharWithoutCarriageReturn() will return char(0) if the character from
+        stdin.readChar is '\r'. And we don't want to set the accumulator to '\r' so ARTICLE code is portable.
+    ]#
+    if character != char(0):
+        accumulator = uint8(character)
 
 
 proc i_accumulatorOutput() =
